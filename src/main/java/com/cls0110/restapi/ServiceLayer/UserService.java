@@ -11,4 +11,5 @@ public interface UserService {
 
     User getUserById(Integer id);
 
+    User updateUser(User user, Integer id);
 }

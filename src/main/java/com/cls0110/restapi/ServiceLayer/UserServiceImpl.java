@@ -39,5 +39,16 @@ public class UserServiceImpl implements UserService {
         }
     }
 
+    @Override
+    public User updateUser(User user, Integer id) {
+        User existingUser = userRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("User", "id", id));
+        //Modify the Data or Update
+        existingUser.setName(user.getName());
+        existingUser.setAddress(user.getAddress());
+        existingUser.setMobNo(user.getMobNo());
+
+        return userRepository.save(existingUser);
+    }
+
 
 }
