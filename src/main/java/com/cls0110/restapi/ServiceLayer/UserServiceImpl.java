@@ -50,5 +50,11 @@ public class UserServiceImpl implements UserService {
         return userRepository.save(existingUser);
     }
 
-
+    @Override
+    public User deleteUser(Integer id) {
+        User existingUser = userRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("User", "id", id));
+        userRepository.delete(existingUser);
+        return existingUser;
+    }
 }
